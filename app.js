@@ -29,7 +29,8 @@ const sogCounter = ({ playerName, number, shots }, team) => {
   const currentDivEl = document.getElementById("div1");
   const sogButtonEl = document.createElement("button");
   const oopsButtonEl = document.createElement("button");
-  const summaryEl = document.createElement("div");
+  const summaryTeamOneEl = document.createElement("div");
+  const summaryTeamTwoEl = document.createElement("div");
 
   // Adding ID's to elements
   sogButtonEl.id = playerName;
@@ -41,7 +42,8 @@ const sogCounter = ({ playerName, number, shots }, team) => {
   skaterDivEl.className = `skaterDiv ${team}`;
   oopsButtonEl.className = "oopsButton";
   sogButtonEl.className = "sogButton";
-  //   skaterDivEl.className = team;
+  summaryTeamOneEl.className = "teamOneSum";
+  summaryTeamTwoEl.className = "teamTwoSum";
 
   // Adding teams data to elements
   skaterEl.innerHTML = playerName;
@@ -57,10 +59,11 @@ const sogCounter = ({ playerName, number, shots }, team) => {
 
   // location of div on page
   document.body.insertBefore(skaterDivEl, currentDivEl);
-  document.body.insertBefore(summaryEl, currentDivEl.nextSibling);
+  document.body.insertBefore(summaryTeamOneEl, currentDivEl.nextSibling);
 
   // Button functionality
   const totalTeamOneShots = document.getElementById("totalTeamOneShots");
+  const totalTeamTwoShots = document.getElementById("totalTeamTwoShots");
 
   document.getElementById(playerName).addEventListener("click", function (e) {
     e.preventDefault();
@@ -69,8 +72,8 @@ const sogCounter = ({ playerName, number, shots }, team) => {
     totalTeamOneShots.innerHTML = Number(totalTeamOneShots.innerHTML) + 1;
 
     shots > 0
-      ? (summaryEl.innerHTML = `${playerName} : ${shots}`)
-      : (summaryEl.innerHTML = "");
+      ? (summaryTeamOneEl.innerHTML = `${playerName} : ${shots}`)
+      : (summaryTeamOneEl.innerHTML = "");
   });
 
   document
@@ -78,14 +81,16 @@ const sogCounter = ({ playerName, number, shots }, team) => {
     .addEventListener("click", function (e) {
       e.preventDefault();
       let counterDown = Number(totalTeamOneShots.innerHTML) - 1;
+      let counterDownTwo = Number(totalTeamTwoShots.innerHTML) - 1;
+
       shots--;
       if (counterDown >= 0) {
         totalTeamOneShots.innerHTML = counterDown;
       }
 
       shots > 0
-        ? (summaryEl.innerHTML = `${playerName} : ${shots}`)
-        : (summaryEl.innerHTML = "");
+        ? (summaryTeamOneEl.innerHTML = `${playerName} : ${shots}`)
+        : (summaryTeamOneEl.innerHTML = "");
     });
   console.log(team);
 };
