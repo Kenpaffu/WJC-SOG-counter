@@ -1,5 +1,16 @@
 "use strict";
-import { teamUSA, teamCAN, teamRUS } from "./teams.js";
+import {
+  teamUSA,
+  teamCAN,
+  teamRUS,
+  teamSUI,
+  teamSVK,
+  teamGER,
+  teamFIN,
+  teamAUT,
+  teamSWE,
+  teamCZE,
+} from "./teams.js";
 
 // Creating Elements for Total team counters
 const teamOneCounterEl = document.getElementById("team1");
@@ -111,7 +122,6 @@ const sogCounter = ({ playerName, number, shots }, team) => {
           : (summaryTeamTwoEl.innerHTML = "");
       }
     });
-  console.log(team);
 };
 
 const dataPull = (arr, pos, team) => {
