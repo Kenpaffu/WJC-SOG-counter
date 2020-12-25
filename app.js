@@ -1,7 +1,7 @@
 "use strict";
 import { teamUSA, teamCAN, teamRUS } from "./teams.js";
 
-const addElement = ({ playerName, number }) => {
+const addElement = ({ playerName, number, shots }) => {
   // Creating DOM elements
   const skaterDivEl = document.createElement("div");
   const skaterEl = document.createElement("h1");
@@ -9,6 +9,7 @@ const addElement = ({ playerName, number }) => {
   const currentDivEl = document.getElementById("div1");
   const sogButtonEl = document.createElement("button");
   const oopsButtonEl = document.createElement("button");
+  const summaryEl = document.createElement("div");
 
   // Adding ID's to elements
   sogButtonEl.id = playerName;
@@ -35,17 +36,29 @@ const addElement = ({ playerName, number }) => {
 
   // location of div on page
   document.body.insertBefore(skaterDivEl, currentDivEl);
+  document.body.insertBefore(summaryEl, currentDivEl.nextSibling);
 
+  // Button functionality
   document.getElementById(playerName).addEventListener("click", function (e) {
     e.preventDefault();
-    console.log(`Hello ${playerName}`);
+
+    shots++;
+
+    shots > 0
+      ? (summaryEl.innerHTML = `${playerName} : ${shots}`)
+      : (summaryEl.innerHTML = "");
   });
 
   document
     .getElementById(`${playerName}_1`)
     .addEventListener("click", function (e) {
       e.preventDefault();
-      console.log(`Hello ${playerName}`);
+
+      shots--;
+
+      shots > 0
+        ? (summaryEl.innerHTML = `${playerName} : ${shots}`)
+        : (summaryEl.innerHTML = "");
     });
 };
 
