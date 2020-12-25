@@ -1,0 +1,22 @@
+body {
+  background-color: #444444;
+}
+
+h1 {
+  color: wheat;
+}
+
+.skaterName {
+  font-size: 2rem;
+}
+
+.skaterDiv {
+  -webkit-box-shadow: 11px 9px 7px -6px rgba(0, 0, 0, 0.6);
+  box-shadow: 11px 9px 7px -6px rgba(0, 0, 0, 0.6);
+  border: solid;
+  border-color: darkgrey;
+  margin: 20px;
+  display: inline-block;
+  text-align: center;
+  padding: 20px;
+}
