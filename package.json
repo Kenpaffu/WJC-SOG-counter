@@ -1,11 +1,29 @@
 {
   "name": "wjccounters",
   "version": "1.0.0",
-  "description": "",
+  "description": "WJC SOG Counter",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js",
+    "server": "nodemon server.js"
   },
-  "author": "",
-  "license": "ISC"
+  "author": "Tony",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kenpaffu/WJC-SOG-counter.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Kenpaffu/WJC-SOG-counter/issues"
+  },
+  "homepage": "https://github.com/Kenpaffu/WJC-SOG-counter#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "concurrently": "^5.3.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.11.8"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  }
 }
