@@ -1,7 +1,17 @@
 "use strict";
 import { teamUSA, teamCAN, teamRUS } from "./teams.js";
 
-const addElement = ({ playerName, number, shots }) => {
+const titleEl = document.getElementById("team1");
+const total = document.createElement("div");
+
+total.id = "totalShots";
+total.value = 0;
+
+total.innerHTML = total.value;
+
+document.body.insertBefore(total, titleEl.nextSibling);
+
+const addElement = ({ playerName, number, shots }, totalSOG) => {
   // Creating DOM elements
   const skaterDivEl = document.createElement("div");
   const skaterEl = document.createElement("h1");
@@ -39,10 +49,15 @@ const addElement = ({ playerName, number, shots }) => {
   document.body.insertBefore(summaryEl, currentDivEl.nextSibling);
 
   // Button functionality
+  const totalShots = document.getElementById("totalShots");
+
+  console.log(totalShots.value);
+
   document.getElementById(playerName).addEventListener("click", function (e) {
     e.preventDefault();
 
     shots++;
+    totalShots.innerHTML = Number(totalShots.innerHTML) + 1;
 
     shots > 0
       ? (summaryEl.innerHTML = `${playerName} : ${shots}`)
@@ -53,8 +68,11 @@ const addElement = ({ playerName, number, shots }) => {
     .getElementById(`${playerName}_1`)
     .addEventListener("click", function (e) {
       e.preventDefault();
-
+      let counterDown = Number(totalShots.innerHTML) - 1;
       shots--;
+      if (counterDown >= 0) {
+        totalShots.innerHTML = counterDown;
+      }
 
       shots > 0
         ? (summaryEl.innerHTML = `${playerName} : ${shots}`)
