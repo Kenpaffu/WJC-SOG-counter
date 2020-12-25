@@ -1,8 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Graduate&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Graduate&display=swap");
 
 body {
-  font-family: 'Graduate', cursive;
-  background-color: #233D4D;
+  font-family: "Graduate", cursive;
+  background-color: #233d4d;
   color: lightgrey;
 }
 .container-column {
@@ -18,7 +18,7 @@ header {
 }
 .sogTitle {
   font-size: 80px;
-  color: #FE7F2D;
+  color: #fe7f2d;
 }
 .team-one-counter {
   margin-right: 50px;
@@ -69,7 +69,7 @@ button {
 
 .skaterName {
   margin: 5px 0;
-  color:#1f1f1f;
+  color: #1f1f1f;
 }
 .skaterDiv {
   -webkit-box-shadow: 11px 9px 7px -6px rgba(0, 0, 0, 0.6);
@@ -90,7 +90,6 @@ button {
   background-position: center;
   background-repeat: no-repeat;
   background-size: 340px 210px;
-  
 }
 
 .away {
