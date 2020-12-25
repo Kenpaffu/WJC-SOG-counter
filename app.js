@@ -60,6 +60,7 @@ const sogCounter = ({ playerName, number, shots }, team) => {
   // location of div on page
   document.body.insertBefore(skaterDivEl, currentDivEl);
   document.body.insertBefore(summaryTeamOneEl, currentDivEl.nextSibling);
+  document.body.insertBefore(summaryTeamTwoEl, currentDivEl.nextSibling);
 
   // Button functionality
   const totalTeamOneShots = document.getElementById("totalTeamOneShots");
@@ -67,13 +68,21 @@ const sogCounter = ({ playerName, number, shots }, team) => {
 
   document.getElementById(playerName).addEventListener("click", function (e) {
     e.preventDefault();
+    if (team === "home") {
+      shots++;
+      totalTeamOneShots.innerHTML = Number(totalTeamOneShots.innerHTML) + 1;
 
-    shots++;
-    totalTeamOneShots.innerHTML = Number(totalTeamOneShots.innerHTML) + 1;
+      shots > 0
+        ? (summaryTeamOneEl.innerHTML = `${playerName} : ${shots}`)
+        : (summaryTeamOneEl.innerHTML = "");
+    } else {
+      shots++;
+      totalTeamTwoShots.innerHTML = Number(totalTeamTwoShots.innerHTML) + 1;
 
-    shots > 0
-      ? (summaryTeamOneEl.innerHTML = `${playerName} : ${shots}`)
-      : (summaryTeamOneEl.innerHTML = "");
+      shots > 0
+        ? (summaryTeamTwoEl.innerHTML = `${playerName} : ${shots}`)
+        : (summaryTeamTwoEl.innerHTML = "");
+    }
   });
 
   document
@@ -82,15 +91,25 @@ const sogCounter = ({ playerName, number, shots }, team) => {
       e.preventDefault();
       let counterDown = Number(totalTeamOneShots.innerHTML) - 1;
       let counterDownTwo = Number(totalTeamTwoShots.innerHTML) - 1;
+      if (team === "home") {
+        shots--;
+        if (counterDown >= 0) {
+          totalTeamOneShots.innerHTML = counterDown;
+        }
 
-      shots--;
-      if (counterDown >= 0) {
-        totalTeamOneShots.innerHTML = counterDown;
+        shots > 0
+          ? (summaryTeamOneEl.innerHTML = `${playerName} : ${shots}`)
+          : (summaryTeamOneEl.innerHTML = "");
+      } else {
+        shots--;
+        if (counterDown >= 0) {
+          totalTeamTwoShots.innerHTML = counterDown;
+        }
+
+        shots > 0
+          ? (summaryTeamTwoEl.innerHTML = `${playerName} : ${shots}`)
+          : (summaryTeamTwoEl.innerHTML = "");
       }
-
-      shots > 0
-        ? (summaryTeamOneEl.innerHTML = `${playerName} : ${shots}`)
-        : (summaryTeamOneEl.innerHTML = "");
     });
   console.log(team);
 };
