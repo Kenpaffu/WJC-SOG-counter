@@ -10,6 +10,10 @@ const addElement = ({ playerName, number }) => {
   const sogButtonEl = document.createElement("button");
   const oopsButtonEl = document.createElement("button");
 
+  // Adding ID's to elements
+  sogButtonEl.id = playerName;
+  oopsButtonEl.id = `${playerName}_1`;
+
   // Adding classes to elements
   skaterEl.className = "skaterName";
   numEl.className = "skaterNum";
@@ -31,6 +35,18 @@ const addElement = ({ playerName, number }) => {
 
   // location of div on page
   document.body.insertBefore(skaterDivEl, currentDivEl);
+
+  document.getElementById(playerName).addEventListener("click", function (e) {
+    e.preventDefault();
+    console.log(`Hello ${playerName}`);
+  });
+
+  document
+    .getElementById(`${playerName}_1`)
+    .addEventListener("click", function (e) {
+      e.preventDefault();
+      console.log(`Hello ${playerName}`);
+    });
 };
 
 const dataPull = (arr, pos) => {
