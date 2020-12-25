@@ -1,21 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Graduate&display=swap');
+
 body {
-  background-color: #444444;
+  font-family: 'Graduate', cursive;
+  background-color: #233D4D;
+}
+.container-column {
+  display: flex;
+  flex-direction: column;
+}
+.container-row {
+  display: flex;
+  flex-direction: row;
+}
+header {
+  align-items: center;
+}
+.sogTitle {
+  font-size: 80px;
+  color: #FE7F2D;
+}
+.team-one-counter {
+  margin-right: 50px;
+}
+.team-two-counter {
+  margin-left: 50px;
+}
+#totalTeamOneShots {
+  display: flex;
+  justify-content: flex-end;
+  font-size: 30px;
+}
+#totalTeamTwoShots {
+  font-size: 30px;
+}
+#div2 {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+#div1 {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.player-cards {
+  justify-content: space-between;
 }
 
+footer {
+  justify-content: space-between;
+}
 h1 {
   color: wheat;
 }
-
-.skaterName {
-  font-size: 2rem;
+button {
+  margin: 10px;
 }
 
+.skaterName {
+  margin: 5px 0;
+}
 .skaterDiv {
   -webkit-box-shadow: 11px 9px 7px -6px rgba(0, 0, 0, 0.6);
   box-shadow: 11px 9px 7px -6px rgba(0, 0, 0, 0.6);
   border: solid;
   border-color: darkgrey;
   margin: 20px;
+  width: 150px;
+  height: 170px;
   display: inline-block;
   text-align: center;
   padding: 20px;

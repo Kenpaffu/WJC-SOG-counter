@@ -7,11 +7,27 @@
     <link rel="stylesheet" href="./style.css" />
     <script defer type="module" src="app.js"></script>
   </head>
-  <body>
-    <h1 class="sogTitle">SOG</h1>
-    <h1 id="team1">Team 1</h1>
-    <h1 id="team2">Team 2</h1>
-    <div id="div1"></div>
-    <div id="div2"></div>
+  <body class= "container-column">
+    <header class="header container-column">
+      <h1 class="sogTitle">SOG</h1>
+      <div class="team-counter container-row">
+        <div class="team-one-counter">
+          <h1 id="team1">Team 1</h1>  
+        </div>       
+        <div class="team-two-counter">
+          <h1 id="team2">Team 2</h1>
+        </div>
+      </div>
+    </header>
+    <div class="player-cards container-row">
+      <div id="div1"></div>
+      <div id="div2"></div>
+    </div>
+    <footer class="footer container-row">
+      <div class="team-one-summary"> 
+      </div>
+      <div class="team-two-summary">
+      </div>
+    </footer>
   </body>
 </html>

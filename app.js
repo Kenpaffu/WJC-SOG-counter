@@ -3,6 +3,8 @@ import { teamUSA, teamCAN, teamRUS } from "./teams.js";
 
 // Creating Elements for Total team counters
 const teamOneCounterEl = document.getElementById("team1");
+const teamOneCounter = document.getElementsByClassName("team-one-counter")
+const teamTwoCounter = document.getElementsByClassName("team-two-counter")
 const totalTeamOne = document.createElement("div");
 const teamTwoCounterEl = document.getElementById("team2");
 const totalTeamTwo = document.createElement("div");
@@ -18,17 +20,23 @@ totalTeamTwo.value = 0;
 totalTeamTwo.innerHTML = totalTeamTwo.value;
 
 // Location on page
-document.body.insertBefore(totalTeamOne, teamOneCounterEl.nextSibling);
-document.body.insertBefore(totalTeamTwo, teamTwoCounterEl.nextSibling);
+teamOneCounter[0].appendChild(teamOneCounterEl);
+teamTwoCounter[0].appendChild(teamTwoCounterEl);
+teamOneCounter[0].appendChild(totalTeamOne);
+teamTwoCounter[0].appendChild(totalTeamTwo);
 
 const sogCounter = ({ playerName, number, shots }, team) => {
   // Creating DOM elements
   const skaterDivEl = document.createElement("div");
-  const skaterEl = document.createElement("h1");
+  const skaterFirstEl = document.createElement("h3");
+  const skaterLastEl = document.createElement("h3");
   const numEl = document.createElement("h1");
   const currentDivEl = document.getElementById("div1");
+  const currentDivTwoEl = document.getElementById("div2");
   const sogButtonEl = document.createElement("button");
   const oopsButtonEl = document.createElement("button");
+  const teamOneSummary = document.getElementsByClassName("team-one-summary")
+  const teamTwoSummary = document.getElementsByClassName("team-two-summary")
   const summaryTeamOneEl = document.createElement("div");
   const summaryTeamTwoEl = document.createElement("div");
 
@@ -37,7 +45,8 @@ const sogCounter = ({ playerName, number, shots }, team) => {
   oopsButtonEl.id = `${playerName}_1`;
 
   // Adding classes to elements
-  skaterEl.className = "skaterName";
+  skaterFirstEl.className = "skaterName";
+  skaterLastEl.className = "skaterName";
   numEl.className = "skaterNum";
   skaterDivEl.className = `skaterDiv ${team}`;
   oopsButtonEl.className = "oopsButton";
@@ -46,21 +55,32 @@ const sogCounter = ({ playerName, number, shots }, team) => {
   summaryTeamTwoEl.className = "teamTwoSum";
 
   // Adding teams data to elements
-  skaterEl.innerHTML = playerName;
+  let nameArray = playerName.split(' ');
+  console.log(nameArray)
+  skaterFirstEl.innerHTML = nameArray[0];
+  skaterLastEl.innerHTML = nameArray[1];
   numEl.innerHTML = number;
   sogButtonEl.innerHTML = "Shot";
   oopsButtonEl.innerHTML = "Oops";
 
   // Appending teams data
-  skaterDivEl.appendChild(skaterEl);
+  skaterDivEl.appendChild(skaterFirstEl);
+  skaterDivEl.appendChild(skaterLastEl);
   skaterDivEl.appendChild(numEl);
   skaterDivEl.appendChild(sogButtonEl);
   skaterDivEl.appendChild(oopsButtonEl);
 
+  if(skaterDivEl.classList.contains("home")) {
+    currentDivEl.appendChild(skaterDivEl);
+  } else {
+    currentDivTwoEl.appendChild(skaterDivEl);
+  }
   // location of div on page
-  document.body.insertBefore(skaterDivEl, currentDivEl);
-  document.body.insertBefore(summaryTeamOneEl, currentDivEl.nextSibling);
-
+  if(skaterDivEl.classList.contains("home")) {
+    teamOneSummary[0].appendChild(summaryTeamOneEl);
+  } else {
+    teamTwoSummary[0].appendChild(summaryTeamOneEl);
+  }
   // Button functionality
   const totalTeamOneShots = document.getElementById("totalTeamOneShots");
   const totalTeamTwoShots = document.getElementById("totalTeamTwoShots");
