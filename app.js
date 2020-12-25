@@ -1,17 +1,27 @@
 "use strict";
 import { teamUSA, teamCAN, teamRUS } from "./teams.js";
 
-const titleEl = document.getElementById("team1");
-const total = document.createElement("div");
+// Creating Elements for Total team counters
+const teamOneCounterEl = document.getElementById("team1");
+const totalTeamOne = document.createElement("div");
+const teamTwoCounterEl = document.getElementById("team2");
+const totalTeamTwo = document.createElement("div");
 
-total.id = "totalShots";
-total.value = 0;
+// Setting ID's for total team counters
+totalTeamOne.id = "totalTeamOneShots";
+totalTeamTwo.id = "totalTeamTwoShots";
 
-total.innerHTML = total.value;
+// Setting values for total team counters
+totalTeamOne.value = 0;
+totalTeamOne.innerHTML = totalTeamOne.value;
+totalTeamTwo.value = 0;
+totalTeamTwo.innerHTML = totalTeamTwo.value;
 
-document.body.insertBefore(total, titleEl.nextSibling);
+// Location on page
+document.body.insertBefore(totalTeamOne, teamOneCounterEl.nextSibling);
+document.body.insertBefore(totalTeamTwo, teamTwoCounterEl.nextSibling);
 
-const addElement = ({ playerName, number, shots }, totalSOG) => {
+const sogCounter = ({ playerName, number, shots }, team) => {
   // Creating DOM elements
   const skaterDivEl = document.createElement("div");
   const skaterEl = document.createElement("h1");
@@ -49,15 +59,13 @@ const addElement = ({ playerName, number, shots }, totalSOG) => {
   document.body.insertBefore(summaryEl, currentDivEl.nextSibling);
 
   // Button functionality
-  const totalShots = document.getElementById("totalShots");
-
-  console.log(totalShots.value);
+  const totalTeamOneShots = document.getElementById("totalTeamOneShots");
 
   document.getElementById(playerName).addEventListener("click", function (e) {
     e.preventDefault();
 
     shots++;
-    totalShots.innerHTML = Number(totalShots.innerHTML) + 1;
+    totalTeamOneShots.innerHTML = Number(totalTeamOneShots.innerHTML) + 1;
 
     shots > 0
       ? (summaryEl.innerHTML = `${playerName} : ${shots}`)
@@ -68,21 +76,25 @@ const addElement = ({ playerName, number, shots }, totalSOG) => {
     .getElementById(`${playerName}_1`)
     .addEventListener("click", function (e) {
       e.preventDefault();
-      let counterDown = Number(totalShots.innerHTML) - 1;
+      let counterDown = Number(totalTeamOneShots.innerHTML) - 1;
       shots--;
       if (counterDown >= 0) {
-        totalShots.innerHTML = counterDown;
+        totalTeamOneShots.innerHTML = counterDown;
       }
 
       shots > 0
         ? (summaryEl.innerHTML = `${playerName} : ${shots}`)
         : (summaryEl.innerHTML = "");
     });
+  console.log(team);
 };
 
-const dataPull = (arr, pos) => {
-  arr[0][pos].forEach((skate) => addElement(skate));
+const dataPull = (arr, pos, team) => {
+  arr[0][pos].forEach((skate) => sogCounter(skate, team));
 };
 
-dataPull(teamUSA, "forwards");
-dataPull(teamUSA, "defensemen");
+dataPull(teamUSA, "forwards", 1);
+dataPull(teamUSA, "defensemen", 1);
+
+dataPull(teamRUS, "forwards", 2);
+dataPull(teamRUS, "defensemen", 2);
