@@ -123,7 +123,7 @@ const sogCounter = ({ playerName, number, shots }, team) => {
       let counterDownTwo = Number(totalTeamTwoShots.innerHTML) - 1;
       if (team === "home") {
         shots--;
-        if (counterDown >= 0) {
+        if (counterDown >= 0 && shots >= 0) {
           totalTeamOneShots.innerHTML = counterDown;
         }
 
@@ -132,7 +132,7 @@ const sogCounter = ({ playerName, number, shots }, team) => {
           : (summaryTeamOneEl.innerHTML = "");
       } else {
         shots--;
-        if (counterDownTwo >= 0) {
+        if (counterDownTwo >= 0 && shots >= 0) {
           console.log(counterDownTwo);
           totalTeamTwoShots.innerHTML = counterDownTwo;
         }
