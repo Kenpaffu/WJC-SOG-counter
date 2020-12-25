@@ -67,7 +67,6 @@ const sogCounter = ({ playerName, number, shots }, team) => {
 
   // Adding teams data to elements
   let nameArray = playerName.split(" ");
-  console.log(nameArray);
   skaterFirstEl.innerHTML = nameArray[0];
   skaterLastEl.innerHTML = nameArray[1];
   numEl.innerHTML = number;
@@ -90,7 +89,7 @@ const sogCounter = ({ playerName, number, shots }, team) => {
   if (skaterDivEl.classList.contains("home")) {
     teamOneSummary[0].appendChild(summaryTeamOneEl);
   } else {
-    teamTwoSummary[0].appendChild(summaryTeamOneEl);
+    teamTwoSummary[0].appendChild(summaryTeamTwoEl);
   }
   // Button functionality
   const totalTeamOneShots = document.getElementById("totalTeamOneShots");
@@ -106,6 +105,7 @@ const sogCounter = ({ playerName, number, shots }, team) => {
         ? (summaryTeamOneEl.innerHTML = `${playerName} : ${shots}`)
         : (summaryTeamOneEl.innerHTML = "");
     } else {
+      console.log(totalTeamTwoShots.innerHTML);
       shots++;
       totalTeamTwoShots.innerHTML = Number(totalTeamTwoShots.innerHTML) + 1;
 
@@ -132,8 +132,9 @@ const sogCounter = ({ playerName, number, shots }, team) => {
           : (summaryTeamOneEl.innerHTML = "");
       } else {
         shots--;
-        if (counterDown >= 0) {
-          totalTeamTwoShots.innerHTML = counterDown;
+        if (counterDownTwo >= 0) {
+          console.log(counterDownTwo);
+          totalTeamTwoShots.innerHTML = counterDownTwo;
         }
 
         shots > 0
