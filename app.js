@@ -38,9 +38,10 @@ const sogCounter = ({ playerName, number, shots }, team) => {
   // Adding classes to elements
   skaterEl.className = "skaterName";
   numEl.className = "skaterNum";
-  skaterDivEl.className = "skaterDiv";
+  skaterDivEl.className = `skaterDiv ${team}`;
   oopsButtonEl.className = "oopsButton";
   sogButtonEl.className = "sogButton";
+  //   skaterDivEl.className = team;
 
   // Adding teams data to elements
   skaterEl.innerHTML = playerName;
@@ -93,8 +94,8 @@ const dataPull = (arr, pos, team) => {
   arr[0][pos].forEach((skate) => sogCounter(skate, team));
 };
 
-dataPull(teamUSA, "forwards", 1);
-dataPull(teamUSA, "defensemen", 1);
+dataPull(teamUSA, "forwards", "home");
+dataPull(teamUSA, "defensemen", "home");
 
-dataPull(teamRUS, "forwards", 2);
-dataPull(teamRUS, "defensemen", 2);
+dataPull(teamRUS, "forwards", "away");
+dataPull(teamRUS, "defensemen", "away");
