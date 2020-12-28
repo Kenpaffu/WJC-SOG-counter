@@ -86,7 +86,7 @@ button {
 
 .home {
   background-color: white;
-  background-image: url("images/unitedstates.png");
+  background-image: url("images/canada.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: 340px 210px;
@@ -94,7 +94,7 @@ button {
 
 .away {
   background-color: white;
-  background-image: url("images/austria.png");
+  background-image: url("images/slovakia.png");
   background-position: center;
   /* background-repeat: no-repeat;
   background-size: cover; */

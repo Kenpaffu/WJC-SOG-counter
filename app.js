@@ -148,8 +148,8 @@ const dataPull = (arr, pos, team) => {
   arr[0][pos].forEach((skate) => sogCounter(skate, team));
 };
 
-dataPull(teamUSA, "forwards", "home");
-dataPull(teamUSA, "defensemen", "home");
+dataPull(teamCAN, "forwards", "home");
+dataPull(teamCAN, "defensemen", "home");
 
-dataPull(teamAUT, "forwards", "away");
-dataPull(teamAUT, "defensemen", "away");
+dataPull(teamSVK, "forwards", "away");
+dataPull(teamSVK, "defensemen", "away");
