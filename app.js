@@ -151,5 +151,5 @@ const dataPull = (arr, pos, team) => {
 dataPull(teamUSA, "forwards", "home");
 dataPull(teamUSA, "defensemen", "home");
 
-dataPull(teamCZE, "forwards", "away");
-dataPull(teamCZE, "defensemen", "away");
+dataPull(teamCAN, "forwards", "away");
+dataPull(teamCAN, "defensemen", "away");
